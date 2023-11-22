@@ -4,91 +4,63 @@
     border: 1px solid black;
     width: 200px;
     flex-direction:column;
-    /* gap: 2px; */
     background-color: lightcyan;
-    /* background-color: slategrey; */
     box-shadow: 2px 2px 5px gray;
     padding: 10px;
-    /* margin: 10px; */
 }
 
+.feed-buttons {
+    border: 1px solid black ;
+    background-color: rgb(222, 228, 228);
+    padding: 3px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.feed-buttons:hover {
+    cursor: pointer;
+}
 
 .cards {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 221, 221);;
     align-items: center;
-    width: 150px;
-    height: 350px;
+    width: 180px;
+    height: 450px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 221, 221);
+    box-shadow: 2px 2px 5px gray;
+    
 }
 
-p {
+p, h1 {
     text-align: center;
 }
 
 #petCardContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Adjust as needed */
+    justify-content: space-between;
 }
 
-#hunger_progress, #love_progress {
-    /* margin: 20px auto; */
-    width: 50%;
-    height: 8px;
-    /* position: relative; */
-    background-color: #ddd;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    /* margin: -5px; */
-    /* margin-bottom: 10px; */
-    /* position: absolute; */
-
-}
-
-#hunger_bar {
-    width: 50%;
-    height: 8px;
-    margin-bottom: 10px;
-    background-color: tomato;
-    border-radius: 3px;
-    /* background-color: inherit; */
-    transition: width 0.3s ease-in-out;
-}
-
-#love_bar {
-    width: 50%;
-    height: 8px;
-    margin-bottom: 10px;
-    background-color: green;
-    border-radius: 3px;
-    /* background-color: inherit; */
-    transition: width 0.3s ease-in-out;
-}
-
-.emoji {
-    /* background-color: black; */
+.emojis {
     height:65px;
-    width: 55px;
+    /* width: 55px; */
     border-radius: 5px;
     font-size: 60px;
     padding: 5px;
 }
 
-.name, .emoji, .hunger, .love, .feed {
-    margin: 10px;
-}
 
-.emoji:hover {
+.emojis:hover {
     cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>💚</text></svg>") 16 0,auto;
 }
 
 .container {
     gap: 10px;
     display: flex;
-    /* flex-direction: row; */
-    flex-wrap: wrap;
-    /* justify-content: space-between; */
-    
+    flex-wrap: wrap;    
 
 }

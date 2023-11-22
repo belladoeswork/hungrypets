@@ -3,16 +3,6 @@ const cardContainer = document.querySelector(".container");
 const petCardContainer = document.querySelector("#petCardContainer");
 
 
-let petCards = [];
-let currentEmoji = "";
-let currentName = "";
-let counter = 0;
-let petAlive = true;
-let barWidthHunger = 0;
-let barWidthLove = 100;
-let cardCleared = false;
-
-
 const animalEmojis = [
     "🦜", "🦆", "🦄", "🐄", "🐏", "🐕", "🐩", "🐈", "🦚", "🦩", "🐁", "🦝", "🦨", "🦥", "🐿️", "🐉", "🦔", "🐇", "🦤", "🦮", "🦒", "🦘", "🐪", "🐫", "🦣", "🦓", "🦧", "🐆", "🐅", "🐊", "🐋", "🐬", "🐳", "🐠", "🐡", "🐟", "🦎", "🐍", "🦖", "🐢", "🦂", "🪲", "🐞", "🐌", "🐛", "🐝", "🐒", "🦅",
     "🐓", "🐥", "🦢", "🦒"
@@ -52,24 +42,6 @@ const epitaphs = [
     "A purr-fect companion for eternity."
 ];
 
-// INIT
-
-let card = document.querySelector(".pet_card");
-body.appendChild(card);
-let emojis = document.querySelector(".emoji");
-let nameElement = document.querySelector(".name");
-let hunger = document.querySelector(".hunger");
-let hProgress = document.querySelector("#hunger_progress");
-let hungerBar = document.querySelector("#hunger_bar");
-
-let love = document.querySelector(".love");
-let lProgress = document.querySelector("#love_progress");
-let loveBar = document.querySelector("#love_bar");
-
-let feed = document.querySelector(".feed");
-let quotes = document.querySelector(".quotes");
-
-
 // RANDOM SELECT
 
 function randomEmoji(){
@@ -89,21 +61,6 @@ function randomEpitaphs(){
     return epitaphs[epiQuotes];
 }
 
-function feedPet(){
-    if (barWidthHunger > 0) {
-        barWidthHunger = 0; // decrement value
-        hungerBar.style.width = `${barWidthHunger}%`;
-        console.log("Feed button clicked. Bar width decreased.");
-    }
-}
-
-function lovePet(){
-    if (barWidthLove < 100) {
-        barWidthLove = 100; // increment value
-        loveBar.style.width = `${barWidthLove}%`;
-        console.log("Love button clicked. Bar width increased.");
-    }
-}
 
 function createPetObject() {
     const pet = {
@@ -120,8 +77,6 @@ function createPetObject() {
 const petArray = [];
 
 petArray.push(createPetObject());
-
-// console.log(petArray);
 
 
 function render() {
@@ -176,11 +131,12 @@ function render() {
         })
 
         petEmoji.addEventListener("click", function() {
-            pet.love = 0;
+            pet.love = 100;
         })
 
         if (!pet.isAlive){
             petCard.style.backgroundColor = "red";
+            petEmoji.style.backgroundColor = "black";
             hungerLabel.style.display = "none";
             hungerMeter.style.display = "none";
             loveLabel.style.display = "none";
@@ -215,134 +171,3 @@ const petGeneration = setInterval(() => {
     render();
     
 }, 5000);
-// setTimeout(function(){
-//     clearInterval(petGeneration);
-// }, 20000)
-
-
-// // Create pet card
-// function petCard() {
-
-//     emojis.textContent = randomEmoji();
-//     nameElement.textContent = randomPetNames();
-    
-//     card.appendChild(hunger);
-//     card.appendChild(hProgress);
-//     card.appendChild(love);
-//     card.appendChild(lProgress);
-//     card.appendChild(feed);
-
-
-//     feed.addEventListener("click", feedPet);
-//     emojis.addEventListener("click", lovePet);
-
-//     return card;
-// }
-
-
-// petCard();
-
-// // animate hunger bar
-// function startStatsAnimation(card) {
-
-//     const animateHunger = () => {
-//         barWidthHunger += 1;
-//         hungerBar.style.width = `${barWidthHunger}%`;
-//         // set timeout for death
-//         if (barWidthHunger === 100 || barWidthLove === 0) {
-//             clearCardContent();
-//         }
-//     };
-
-//     // animate love bar
-//     const animateLove = () => {
-//         barWidthLove -= 1;
-//         loveBar.style.width = `${barWidthLove}%`;
-//         if (barWidthHunger === 100 || barWidthLove === 0) {
-//             clearCardContent();
-//         }
-//     };
-
-
-//     // Set initial values for the bars
-//     hungerBar.style.width = "0%";
-//     loveBar.style.width = "100%";
-
-// // Animation starts 1 second after page load
-//     setTimeout(() => {
-//         let intervalIDHunger = setInterval(() => {
-//             if (barWidthHunger === 100) {
-//                 clearInterval(intervalIDHunger);
-//             } else {
-//                 animateHunger();
-//             }
-//         }, 100); // Speed of the animation
-
-//         let intervalIDLove = setInterval(() => {
-//             if (barWidthLove === 0) {
-//                 clearInterval(intervalIDLove);
-//             } else {
-//                 animateLove();
-//             }
-//         }, 100); // Speed of the animation
-//     }, 1000);
-// };
-
-// startStatsAnimation();
-
-
-// // if hungry and not loved
-// function clearCardContent() {
-
-//     if (cardCleared) {
-//         return; 
-//     }
-//     petAlive = false;
-//     cardCleared = true;
-
-//     emojis.textContent = currentEmoji;
-//     nameElement.textContent = currentName;
-//     quotes.textContent = randomEpitaphs();
-
-//     // styling
-//     card.style.backgroundColor = "red";
-//     nameElement.style.color = "white";
-//     quotes.style.color = "white";
-//     emojis.style.backgroundColor = "black";
-//     quotes.style.textAlign = "center";
-
-//     // Hide unnecessary elements
-//     hunger.style.display = "none";
-//     hProgress.style.display = "none";
-//     love.style.display = "none";
-//     lProgress.style.display = "none";
-//     feed.style.display = "none";
-// };
-
-// // generateCards();
-// const petCardsArray = [];
-
-// function isPetAlive() {
-//     return petAlive;
-// }
-// // Function to generate a new pet card
-// function generateNewPet() {
-    
-//     let newCard = petCard();
-
-//     petCardContainer.appendChild(newCard);
-
-//     startStatsAnimation(newCard);
-
-//     petCardsArray.push(newCard);
-
-//     // petCardsArray.appendChild(newCard);
-
-//     setTimeout(() => {
-//         if (isPetAlive()) {
-//             generateNewPet();
-//         }
-//     }, 10000);
-
-// }
-// generateNewPet();
