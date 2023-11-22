@@ -125,7 +125,7 @@ function render() {
         feedButton.textContent = "Feed me 🍞";
         petCard.appendChild(feedButton);
 
-        petCard.addEventListener("click", function() {
+        feedButton.addEventListener("click", function() {
             pet.hunger = 0;
             hungerMeter.value = pet.hunger;
         })
